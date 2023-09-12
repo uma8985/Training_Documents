@@ -1,0 +1,348 @@
+11th Sep. 2023 7-9AM
+
+
+DCP 
+
+***********************
+Day 1 - 11th Sep. 2023 
+***********************
+
+
+		Introduction to DevOps ::::
+		
+		Pre-requisities :::
+			
+			1. AWS Free tier Account 
+					Create Virtual Machines (EC2 Instances)
+						SSH Agent - Putty/Mobaxterm
+			2. GITHUB Account 
+			3. Docker Hub Account 
+			4. Visual Studio Code - IDE 
+			
+			
+		MyLab from LMS --> 
+		
+		
+		DevOps ::::
+			What is DevOps ???
+			How it will add value to our profile ???
+			
+		What is DevOps ??? 
+		
+		Software Development Process --> SDLC
+		
+		Software ???
+			Collection of Programs
+				- System Software 
+				
+				- Application Software 
+		Application ???
+			
+		SDLC - Software Development Lifecycle :::
+		
+			- Requirement Analysis
+			- Design
+			- Code/Development
+			- Testing 
+			- Implementation/Deployment
+			- Monitoring/Maintainence
+			
+		Billing System 
+		
+			Waterfall Model ::		Linear in approach	9 month
+			
+				Core Project:
+				
+				- Requirement Analysis
+				- Design
+				- Code/Development
+				- Testing 
+				- Implementation/Deployment
+				- Monitoring/Maintainence
+
+				Enhancement Project - CR
+
+				- Requirement Analysis
+				- Design
+				- Code/Development
+				- Testing 
+				- Implementation/Deployment
+				- Monitoring/Maintainence
+		
+			Agile Methodologies ::
+			
+			Web Application --> E-Commerce portal
+				www.amazon.com
+			User Registration
+			Sigin
+			Search
+			place order
+			
+			Iteration1 / Module1
+			
+			- Requirement Analysis
+			- Design
+			- Code/Development
+			- Testing 
+			- Implementation/Deliver
+			- Monitoring/Maintainence
+
+			Iteration2 / Module2
+			
+			- Requirement Analysis
+			- Design
+			- Code/Development
+			- Testing 
+			- Implementation/Deliver
+			- Monitoring/Maintainence
+			
+			Iteration3 / Module3
+			
+			- Requirement Analysis
+			- Design
+			- Code/Development
+			- Testing 
+			- Implementation/Deliver
+			- Monitoring/Maintainence
+			
+			
+			Continous Development 
+			
+			Continous Integration 
+			
+			Continous Testing 
+			
+			Continous Delivery 	==> We need a manual approval to release the changes to production
+			
+			Continous Deployment ==> We can perform automated production releases without any manual intervention
+			
+			Continous Monitoring 
+			
+		Telecomm domain :
+		
+			SP1	==> To release new offer to their customers.  ASAP..
+			SP2 ==> 
+		
+		DevOps !!! 
+			Is a software development strategy, which helps to promote the collaboration between the teams - Development team and Operations team to achieve Continous Development, Continous Integration, Continous Testing, Continous Delivery, Continous Deployment and Continous Monitoring
+			in more automated manner.
+		
+		Teams :
+		
+		
+			DevOps Team:
+				Infra-Structure Team 	
+				Development Team 			
+				Testing Team 
+				Release Management Team
+				Production Support Team 
+				Production Monitoring Team 
+				Security Team 
+				
+		
+		Define the Process / Strategies :::
+		
+		DevOps Stages :::
+				
+			Continous Development 		--> Improve the productivity of Developers
+			
+					Coding ==>
+						Introduce the IDEs - (Integrated Development Environment) Eclipse based IDEs, Eclipse, Visual Studio Code, Pycharm, to develop the code.
+					Build ==> 
+						It is a process of compiling the source code and create artifacts(Binaries - *.war / *.jar /*.exec / *.dll
+					Unit Testing by developers					
+					Promote to higher envrionment for further Testing
+					Notify the Testing team thru Emails...
+					
+					DevOps Tools ::: GIT, Jenkins, Build tools Maven,Gradle, JUnit/TestNG, Ansible,Docker 
+					
+			
+			Continous Integration 
+					==> How frequently we can integrate the code for further testing without creating any impact
+						Promote to higher envrionment for further Testing
+						DevOps Tools ::: Jenkins, Ansible, Docker
+					
+			
+			Continous Testing 
+					==> Automate the Testing 
+						Junit/TestNG/Selenium
+						Test Cases/Test Scenarios/Test Data
+						QA/UAT						
+						DevOps Tools ::: Jenkins -- Automate the testing 
+						Shift Left Approach :
+							Identify all the possible issues at the very earlier stage and fix it.
+						
+						
+			
+			Continous Delivery 	==> We need a manual approval to release the changes to production
+			
+			Continous Deployment ==> We can perform automated production releases without any manual intervention
+			
+			Continous Monitoring			
+		
+				
+***********************
+Day 1 - 12th Sep. 2023 
+***********************			
+			
+			Environments :::
+			
+			Non-Production Environment															Production Environment
+			
+			DEV 
+			Test 
+				QA 	--> Quality Assurance Testing 
+				UAT --> User Acceptance Testing 
+			Pre-Prod 										====>									Prod 
+			
+
+			
+			Continous Delivery / Deployment
+					Both are used to release the prod to production environment
+			
+			Continous Delivery 	==> We need a manual approval to release the changes to production
+			
+			Continous Deployment ==> We can perform automated production releases without any manual intervention
+			
+			
+			Application ::::
+			
+				Application Architecture :::
+				
+					- Monolith Application Architecture
+						It is a tightly coupled Application Architecture
+						All the dependencies are coded and deployed all together.
+						We cannot independently test and deploy and specific module.
+						
+							Web - Application ::: User Registration Appln.
+								Modules / Function 
+							
+							Sign-Up 
+							Sign-In 
+							Access the Appln Service										
+									
+							
+								Applications:
+								
+								- Requirement Analysis
+								- Design
+								- Code/Development
+								- Testing 
+								- Implementation/Deployment
+								- Monitoring/Maintainence	
+
+
+					- Micro Service Based Application Architecture
+							The deployments can be done without any downtime					
+					
+							Web Application --> Ecommerce
+							www.amazon.com
+							
+						Service / function / Modules	
+							
+					s1	Sign-up			--> Application_logic,front_end,Dbase - developer1 - Independently code, test, integrate, and deploy to prod
+					s2	Sign-in			--> Application_logic,front_end,Dbase - developer2 - Independently code, test, integrate, and deploy to prod
+					s3	search 
+						Add to cart
+						place the order 
+						make payment
+						confirm the order 
+						track
+						
+						
+			Application :: Legacy Appln.
+			
+			Banking
+			INS 
+			
+			On-premises		-->	Own Infra-structure
+
+			Cloud Platform
+			
+			Hybrid Model.
+
+			Continous Delivery 	==> We need a manual approval to release the changes to production.
+									Might need downtime.
+									Tools : Jenkins, Ansible, Docker, Kubernetes
+			Continous Deployment ==> We can perform automated production releases without any manual intervention
+										Without Downtime.	ZERO Downtime
+									Tools : Jenkins, Ansible, Docker, Kubernetes
+			
+		Banking Application :::
+		
+			On-line 
+				Production Deployment Window -- 4 to 6hrs 
+					Production Testing
+					
+			facebook
+			netflix
+			google
+			
+		ALM ==> Application Lifecycle Management Tool
+			JIRA, Az board
+			
+			
+		Continous Monitoring ::	
+		
+			Infra-Structure Monitoring
+				Prometheus/Grafana/Splunk/Dynatrace  - Jenkins,GIT
+				CPU / Memory / Traffic --> Utilization
+			
+					Threshold limit ==> 75% of Memory/CPU
+					EMail Alert to the concerned team
+			
+			Application Monitoring 
+				AppDynamics 
+								
+			
+	
+	Infra-Structure Management ::::
+	
+			IAC --> Infra-Structure As Code ::
+					Terraform/CF 	- 	Provision/Create the Servers
+					Ansible 		-	Configure the Servers with all the required tools and services.
+					
+					
+	Overall DevOps Implementation :
+	
+			*People 
+			Process 
+			Tools 
+					
+		DevOps !!! 
+			Is a software development strategy, which helps to promote the collaboration between the teams - Development team and Operations team to achieve Continous Development, Continous Integration, Continous Testing, Continous Delivery, Continous Deployment and Continous Monitoring
+			in more automated manner.		
+
+
+	Roles & Responsibilites of DevOps Team Members :::
+	
+	
+	DevOps Associate 
+	Sr. DevOps Associate
+	DevOps Lead 
+	Sr. DevOps Lead 
+	DevOps Architect 
+	Sr. DevOps Architect
+	DevOps Consultant 
+	Sr, DevOps Consultant
+	SRE 
+	
+	Script Languages :::: shell,groovy,yaml,python scripting
+	
+	Waterfall,Agile,DevOps,DevSecOps,GitOps,SRE,MLOps,AIOps
+	
+	
+	Lab Access :::
+	
+		Pre-requisites :::
+		
+			git --> It is source code management system.
+			remote git 
+				www.github.com
+						Is the remote git repository to maintain the application folders and files.
+	
+	
+
+	
+	
+		
