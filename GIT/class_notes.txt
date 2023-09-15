@@ -943,4 +943,417 @@ Day 3 - 14th Sep. 2023
 				
 Next :				
 				git revert :::				
+
+				
+***********************
+Day 5 - 15th Sep. 2023 
+***********************		
+				
+			git revert
+			
+				Is used to undo the specific commit point
+				It will create a new commit point.
+				It can be used in shared repository.
+				
+			repo1:
+			
+				cm3
+				cm2
+				cm1
+				
+			git revert cm2
+			
+			repo1:
+				reverted cm2
+				cm3
+				cm2
+				cm1
+				
+			git revert --> git reset hard
+			
+			
+			code changes ==> 
+			
+				deployed to qa/uat/prod
+				
+				v1.4
+				v1.5 ==> 
+				
+				during the deployment window, 
+					- Fix that issue 
+					- revert the changes 			
+			
+			git ignore :::
+			
+				It is used to ignore the files from tracking.
+				
+			Java_Maven_Web_Appln.					==>		push		==>			remote repo.
+			
+				src 
+					main
+						signin.java 
+						payment.java 
+						sign.class
+						payment.class
+					test 
+						testsign.java 
+						payment.java
+					resource
+						index.html 
+				target 
+					sign.war 
+					*war. 
+				db_user_name
+				db_password
+				db_secrets 
+				application_properties
+				
+				
+				
+				vi .gitignore 
+				
+					sample.txt 
+					*.doc 
+					*.md
+					*.class 
+					*.war 
+					db_user_name
+					db_password
+					db_secrets 
+					application_properties	
 					
+				
+			git commit --->> 
+			
+				git commit -m "CRsep101 - Create payment module" 
+				
+				git commit --amend -m "New CM1"
+				
+				
+
+				
+				
+			Parallel Development :::
+			
+			git Branches :::
+
+				
+			Project_Repo:
+				master/main					# default			# Is always considered as a production copy.
+				
+			Repo1:
+				master --> cm1,cm2,cm3 
+					feature1 --> cm1,cm2,cm3,cm3.1,cm4,cm5
+					
+				upon merge -- 
+					
+					master - cm1,cm2,cm3,cm3.1,cm4,cm5
+					
+		
+			GIT Branching Strategies :::
+
+Scenario 1 :
+			
+			Appln_Repo:
+			
+				master --> cm1,cm2,cm3
+					feature1 --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,.....
+				
+			
+Scenario 2 :
+			
+			Appln_Repo:
+			
+				master --> cm1,cm2,cm3 
+				
+					Dev1_Branch --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+						feature1 --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3				
+						feature2 --> cm1,cm2,cm3,f2cm1,f2cm2,f2cm3
+
+			
+Scenario 3 :
+
+			Appln_Repo:
+			
+				master --> cm1,cm2,cm3				
+				
+					Integration_Branch --> cm1,cm2,cm3,Dev1_Branch,Dev2_Branch
+					
+						Dev1_Branch --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+							feature1 --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3				
+							feature2 --> cm1,cm2,cm3,f2cm1,f2cm2,f2cm3
+
+						Dev2_Branch --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+							feature1 --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3				
+							feature2 --> cm1,cm2,cm3,f2cm1,f2cm2,f2cm3
+							
+							
+			
+Scenario 4 :
+
+			Appln_Repo:
+			
+				master --> cm1,cm2,cm3				
+
+					Release_Branch -->  cm1,cm2,cm3,Team1,Team2
+					
+						Integration_Branch1 --> cm1,cm2,cm3,Dev1_Branch,Dev2_Branch				# Team1					
+							Dev1_Branch --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+								feature1 --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3				
+								feature2 --> cm1,cm2,cm3,f2cm1,f2cm2,f2cm3
+
+							Dev2_Branch --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+								feature1 --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3				
+								feature2 --> cm1,cm2,cm3,f2cm1,f2cm2,f2cm3
+
+						Integration_Branch2 --> cm1,cm2,cm3,Dev1_Branch,Dev2_Branch				# Team2					
+							Dev1_Branch --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+								feature1 --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3				
+								feature2 --> cm1,cm2,cm3,f2cm1,f2cm2,f2cm3
+
+							Dev2_Branch --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+								feature1 --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3				
+								feature2 --> cm1,cm2,cm3,f2cm1,f2cm2,f2cm3
+								
+								
+		Working with Branches :::
+		
+			git branch 
+			
+			git switch 
+			
+			git checkout 
+			
+			git merge 
+			
+			
+		
+		repo:
+		
+			master 
+			
+				feature1
+				feature2
+				feature3
+				
+				
+			Create Branch:
+				
+				git switch -c <feature_branch>
+				
+				git branch 								# get the list of branches 
+				
+				git branch feature1
+				
+				git checkout -b <feature2>
+				
+				
+				git Merge
+				
+					git switch master 
+					git merge feature1					# should be execute only from the target branch.	
+					
+				
+
+				GIT MERGE CONFLICTS:
+				
+					When Merge Conflict Occurs ???
+					
+						Whenever more than one developers/features try to update the same file and record in the target branch, we get merge conflict.
+						
+					How to Resolve it ???
+					
+						1. Identify the file(s) that are causing merge conflict.
+						2. Review the content of the file.
+						3. Decide who's changes should be retained / removed 
+						4. update the file accordingly, 
+						5. Perform git Add and commit the changes.
+
+					DevOps !!!! 
+					
+						Prevent the Conflict!!!!
+						
+						GUI - handling repo will be very user friendly.
+						
+						HEAD pointer --> used by git to identify the latest commit of the current branch.
+
+  506  mkdir testrepo1
+  507  cd testrepo1/
+  508  clear
+  509  git init
+  510  echo "rec1" >> f1.txt
+  511  git add .
+  512  git commit -m "CM1"
+  513  echo "rec1" >> f2.txt
+  514  git add .
+  515  git commit -m "CM2"
+  516  echo "rec1" >> f3.txt
+  517  git add .
+  518  git commit -m "CM3"
+  519  echo "rec1" >> f4.txt
+  520  git add .
+  521  git commit -m "CM4"
+  522  clear
+  523  git log --oneline
+  524  ls
+  525  git revert 9add7cd
+  526  git log --oneline
+  527  ls
+  528  git show a63a821
+  529  git revert a63a821
+  530  git log --oneline
+  531  ls
+  532  ls -a
+  533  cd ..
+  534  mkdir testrepo2
+  535  clear
+  536  cd testrepo2/
+  537  git init
+  538  ls -a
+  539  git status
+  540  vi .gitignore
+  541  cat .gitignore
+  542  git status
+  543  git add .
+  544  git commit -m "Initial Commit - created .gitignore"
+  545  git status
+  546  ls
+  547  ls -a
+  548  cat .git
+  549  cat .gitignore
+  550  ls
+  551  echo "rec1" >> sample.txt
+  552  git status
+  553  echo "Rec1" >> s1.doc
+  554  ls
+  555  git status
+  556  git add .
+  557  git commit -m "CM1"
+  558  echo "resaf" >> s1.jar
+  559  git status
+  560  clear
+  561  git log --oneline
+  562  git status
+  563  git add .
+  564  git commit -m "adfasdf"
+  565  git log --oneline
+  566  clear
+  567  git log --oneline
+  568  git commit -m "NEW CM"
+  569  git commit --amend -m "CR1-create new file"
+  570  git log --oneline
+  571  git help
+  572  clear
+  573  git branch
+  574  git branch feature1
+  575  git branch
+  576  ls
+  577  cd ..
+  578  clear
+  579  mdkir testrepo3
+  580  mkdir testrepo3
+  581  clear
+  582  cd testrepo3/
+  583  clear
+  584  git init
+  585  git status
+  586  echo "cm1" >> f1.txt
+  587  git add .
+  588  git commit -m "CM1 from master"
+  589  echo "cm1" >> f2.txt
+  590  git add .
+  591  git commit -m "CM2 from master"
+  592  echo "cm1" >> f3.txt
+  593  git add .
+  594  git commit -m "CM3 from master"
+  595  clear
+  596  git log --oneline
+  597  ls
+  598  git branch feature1
+  599  git branch
+  600  git switch -c feature2
+  601  git switch master
+  602  clear
+  603  git branch
+  604  git checkout -b feature3
+  605  git switch master
+  606  git branch
+  607  clear
+  608  git status
+  609  git log --oneline
+  610  git switch feature1
+  611  git log --oneline
+  612  ls
+  613  echo "rec1" >> s1.txt
+  614  git add .
+  615  git commit -m "CM1 from feature1"
+  616  git log --oneline
+  617  ls
+  618  git switch master
+  619  ls
+  620  git log --oneline
+  621  git switch feature1
+  622  ls
+  623  git log --oneline
+  624  git switch master
+  625  git merge feature1
+  626  ls
+  627  git log --oneline
+  628  ls
+  629  git switch feature2
+  630  git log --oneline
+  631  git branch
+  632  git switch master
+  633  ls
+  634  git switch -c feature4
+  635  git log --oneline
+  636  ls
+  637  git log --oneline
+  638  ls
+  639  cat s1.txt
+  640  echo "rec2 from feature4" >> s1.txt
+  641  cat s1.txt
+  642  git status
+  643  git add .
+  644  git commit -m "CM1 from feature4"
+  645  git log --oneline
+  646  git switch feature2
+  647  ls
+  648  git switch feature1
+  649  ls
+  650  cat s1.txt
+  651  echo "rec2 from feature1" >> s1.txt
+  652  cat s1.txt
+  653  git add .
+  654  git commit -m "CM2 from feature1"
+  655  git status
+  656  git log --oneline
+  657  git switch master
+  658  git log --oneline
+  659  ls
+  660  cat s1.txt
+  661  git merge feature1
+  662  git log --oneline
+  663  cat s1.txt
+  664  git merge feature4
+  665  cat s1.txt
+  666  vi s1.txt
+  667  git add .
+  668  git commit -m "Resolved Merge Conflict using Feature4"
+  669  git status
+  670  git log --oneline
+  671  git log --oneline -2
+  672  git checkout feature1
+  673  git checkout master
+  674  git checkout asdfasdfsad
+  675  git switch asdfasdf
+  676  git log --oneline
+  677  history
+
+
+Next :::	
+						git rebase
+						squash
+						stash 						
+						Remote Repository
+						
