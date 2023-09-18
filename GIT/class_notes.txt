@@ -1357,3 +1357,214 @@ Next :::
 						stash 						
 						Remote Repository
 						
+***********************
+Day 6 - 18th Sep. 2023 
+***********************							
+						
+			git rebase
+			squash
+			stash 						
+			Remote Repository	
+
+			
+			git rebase :::
+
+			myapprepo1 
+			
+				master 		---> cm1,cm2,cm3 
+				
+				feature1 	---> cm1,cm2,cm3 
+							
+								 cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,
+
+					git switch master 
+					
+					git merge feature1								# output in master: cm1,cm2,cm3,f1cm1,f1cm2,f1cm3, 				
+
+				
+				feature2 	---> cm1,cm2,cm3 
+							
+								 cm1,cm2,cm3,f2cm1,f2cm2,f2cm3,	
+
+					git switch master 
+					
+					git merget feature2								# out in master: cm1,cm2,cm3,f2cm1,f2cm2,f2cm3,f1cm1,f1cm2,f1cm3,
+					
+																	# exepected output: cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3,
+																	
+																	
+																
+																
+				GIT REBASE :::
+				
+					It is used to Re-Base the branch before merge. It is used to maintain the commits is linear fashion.
+					This is basically used to avoid merge conflicts in the target branch(if exist)
+					It is always the best practise to perform rebase before any merge action.
+					It is used to keep the current branch in sync with target branch.
+					
+
+			myapprepo1 
+			
+				master 		---> cm1,cm2,cm3 						s1.txt == rec1,record2
+				
+				feature1 	---> cm1,cm2,cm3 
+							
+								 cm1,cm2,cm3,f1cm1,f1cm2,f1cm3		s1.txt @record2
+								 
+					git rebase master								# This command should be executed from the current branch			 
+
+					git switch master 
+					
+					git merge feature1								# output in master: cm1,cm2,cm3,f1cm1,f1cm2,f1cm3 				
+
+				
+				feature2 	---> cm1,cm2,cm3 
+							
+								 cm1,cm2,cm3,f2cm1,f2cm2,f2cm3	
+
+					git rebase master								# This command should be executed from the current branch			 
+								 cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3															
+
+					git switch master 
+					
+					git merge feature2								# out in master: cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3	
+
+			
+			
+			GIT SQUASH :::::
+			
+					- git squash is used to combine the commits and create a new commit point.
+					- git squash can be done at two levels ::
+
+				myapprepo1 
+				
+					master 		---> cm1,cm2,cm3 
+					
+					feature1 	---> cm1,cm2,cm3 			# Create a feature -- 2 func.
+								
+									 cm1,cm2,cm3,f11cm1,2,3,4,5,6,7,8,9,........,50,f12cm1,2,3,4,5,6,7,8,9,........,50,
+
+					feature2 	---> cm1,cm2,cm3 
+								
+									 cm1,cm2,cm3,f2cm1,2,3,4,5,6,7,8,9,........,n	
+										
+					
+			
+				- While working in the current branch : 
+				
+					feature1 	---> cm1,cm2,cm3 			# Create a feature -- 2 func.
+								
+									 cm1,cm2,cm3,f11cm1,2,3,4,5,6,7,8,9,........,50,	
+						
+						git rebase -i ~HEAD 10
+						
+							Enter the valid commit message :
+							
+									cm1,cm2,cm3,f1-func1-commits
+									
+									cm1,cm2,cm3,f1-func1-commits,f12cm1,2,3,4,5,6,7,8,9,........,50,
+				
+						git rebase -i HEAD~50
+							Enter the valid commit message :
+							
+									cm1,cm2,cm3,f1-func1-commits,f1-func2-commits
+
+									
+				- While Merging ::
+			
+					feature2 	---> cm1,cm2,cm3 
+								
+									 cm1,cm2,cm3,f2cm1,2,3,4,5,6,7,8,9,10	
+
+						git switch master 
+						git merge --squash feature1
+						git commit -m "Combined the commits from feature1"	
+							
+						
+Scenario 4 :
+
+			Appln_Repo:
+						
+				master --> cm1,cm2,cm3,cm4				
+
+					Release_Branch -->  cm1,cm2,cm3,Team1,Team2
+					
+								cm1,cm2,cm3,T1Dev1_Branch,T1Dev2_Branch,T2Dev1_Branch,T2Dev2_Branch		# without squash
+								
+						Integration_Branch1 --> cm1,cm2,cm3,T1Dev1_Branch,T1Dev2_Branch				# Team1		with Squash	
+									#without squash :	cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3,,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3						
+							Dev1_Branch --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+								feature1 --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3				
+								feature2 --> cm1,cm2,cm3,f2cm1,f2cm2,f2cm3
+
+							Dev2_Branch --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+								feature1 --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3				
+								feature2 --> cm1,cm2,cm3,f2cm1,f2cm2,f2cm3
+
+						Integration_Branch2 --> cm1,cm2,cm3,T2Dev1_Branch,T2Dev2_Branch				# Team2		with squash
+										#without squash :	cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3,,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+							Dev1_Branch --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+								feature1 --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3				
+								feature2 --> cm1,cm2,cm3,f2cm1,f2cm2,f2cm3
+
+							Dev2_Branch --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3,f2cm1,f2cm2,f2cm3
+								feature1 --> cm1,cm2,cm3,f1cm1,f1cm2,f1cm3				
+								feature2 --> cm1,cm2,cm3,f2cm1,f2cm2,f2cm3						
+							
+					
+			cherry-pick 
+
+			git cherry-pick Team1					
+					
+					Syntax :
+					
+							git cherry-pick <commit_id1> <commit_id2>
+					
+				master 
+					 cm1,cm2,cm3 
+					 
+				feature1
+						cm1,cm2,cm3,f1cm1,f1cm2,f1cm3 
+						
+					git switch master 
+					
+					git cherry-pick f1cm2			# cm1,cm2,cm3,f1cm2
+					
+					git merge feature1 				# cm1,cm2,cm3,f1cm1,f1cm2,f1cm3 
+					
+			
+			git Stash :::
+				
+				
+			GIT STASH :::
+			
+				It is used to temporarily save the un-committed changes to a Temporary Area in GIT Directory.
+				
+				
+				git stash save "stashed file"
+				
+				git stash list
+				
+				git stash apply ==> It is used to apply the latest stashed entry back to staging area. But, the changes still remains in stash list.
+				
+				git stash pop	==> It is used to apply the latest stashed entry back to staging area and removes that entry from stash list. 
+			
+				git stash drop  ==> It is used to drop/delete the latest stashed entry from the stash list.
+				
+				git stash clear ==> It is used to drop/delete all the entries from the stash list.
+				
+				git stash branch <branch_name>
+				
+				git stash branch temp_feature1_branch 
+				
+					git switch feature1 
+					
+					git merge temp_feature1_branch 
+				
+				Parallel Development:
+				
+
+Next ::		
+			Handling Remote Repositories using GITHUB.
+			
+			Jenkins.
