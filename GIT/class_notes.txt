@@ -1568,3 +1568,269 @@ Next ::
 			Handling Remote Repositories using GITHUB.
 			
 			Jenkins.
+			
+				
+***********************
+Day 7 - 19th Sep. 2023 
+***********************		
+	
+		Handling Remote Repositories using GITHUB :::
+		
+		echo "rec1" >> file1.txt 
+		
+		git add .
+		
+		git stash save "file1.txt"
+		
+		git stash branch "<temp_branch1>"
+		
+		Handling Remote Repositories using GITHUB :::
+		
+		
+		Developers' Workload :
+		
+			Enhancement Project/Bug fix 		## Remote Repository already exist with project docs 
+			
+			New Project 						## Empty Remote Repository exist. Project docs should be loaded from local.
+		
+		
+		
+			Enhancement Project/Bug fix 		## Remote Repository already exist with project docs 
+
+				testrepo1
+				
+				git clone - 
+			
+				clone url --> 
+				
+				syntax : git clone https://github.com/EDU-Sep11/edu-testrepo1.git
+				
+				Access to github ::
+				
+					username & password.
+					
+					username & access token. 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
+					
+				git clone 
+				
+				git remote -v 
+				
+				git fetch/pull - handle incremental changes! 
+					push 	==>	It is used to add the changes from Local Repository to Remote Repository.
+					
+					fetch/pull	==> Both are used to handle the incremental changes
+					
+							fetch :
+								==> It is just used to check if there is any changes available in remote repository.
+									If there is any changes available, the changes will be updated in the local repository. It will never gets updated in the working directory.
+								
+							pull :
+								==> It is used to check if there is any changes available in remote repository and if there is any changes available, the changes will be updated in the local repository as well as in the working directory.	
+								pull = fetch + merge 					
+					
+				
+				pull == rebase 
+				
+				git remote -v
+				
+				git remote add origin https://github.com/EDU-Sep11/edu-testrepo1.git
+				
+				git remote remove origin
+				
+				git push -u origin 					# Changes will be push to default branch in remote repo.
+				
+				git push -u origin feature1
+				
+				
+				For New Project Repository :
+				
+				git init
+				echo "rec1" >> f1.txt 
+				git add . 
+				git commit -m "asdf"
+				
+				git remote add origin https://github.com/EDU-Sep11/edu-testrepo1.git
+				
+				git push -u origin master 
+				
+				
+				git remote add origin2 https://github.com/EDU-Sep11/edu-testrepo1.git
+				
+			
+		
+  501  cd e:
+  502  cd edu-Sep11/
+  503  clear
+  504  ls
+  505  clear
+  506  mkdir myremoterepos
+  507  cd myremoterepos/
+  508  ls
+  509  git clone https://github.com/EDU-Sep11/edu-testrepo1.git
+  510  ls
+  511  cd edu-testrepo1/
+  512  clear
+  513  ls
+  514  git remote -v
+  515  git status
+  516  git log --oneline
+  517  git switch -c localfeature1
+  518  ls
+  519  echo "rec1" >> localfile1.txt
+  520  git add .
+  521  git commit -m "created localfile1.txt"
+  522  git push -u origin localfeature1
+  523  git switch main
+  524  celar
+  525  clear
+  526  git status
+  527  ls
+  528  ls
+  529  git status
+  530  git remote -v
+  531  git fetch
+  532  ls
+  533  git fetch
+  534  git ls-files
+  535  clear
+  536  git status
+  537  git pull
+  538  ls
+  539  git branch
+  540  clear
+  541  git pull
+  542  ls
+  543  clear
+  544  git remote -v
+  545  git remote remote origin
+  546  clear
+  547  clear
+  548  git remote -v
+  549  git remote remove origin
+  550  git remote -v
+  551  git remote add origin https://github.com/EDU-Sep11/edu-testrepo1.git
+  552  git remote -v
+  553  cd ..
+  554  mkdir remoterepo1
+  555  cd remoterepo1/
+  556  clear
+  557  git init
+  558  echo "rec1" >> file1.txt
+  559  git add .
+  560  git commit -m "created file1.txt"
+  561  git log --oneline
+  562  git remote -v
+  563  git remote add origin https://github.com/EDU-Sep11/testrepo2.git
+  564  git remote -v
+  565  git branch -M main
+  566  git branch -M master
+  567  git push -u origin master
+  568  git remote -v
+  569  git remote add origin2 https://github.com/EDU-Sep11/edu-testrepo1.git
+  570  git remote -v
+  571  cd ..
+  572  history
+			
+			
+			master     s1.txt (re1)
+			
+									re1,re2
+									# conflict
+			
+			feature1
+						re1,re2
+						
+				git switch master 
+				
+				git merge feature1
+						
+			feature2    re1,record2		
+
+					git rebase master  # conflict
+					
+				git switch master 
+				
+				git merge feature2				
+				
+		
+		Build Orchestration Tool  : Jenkins
+		
+		Build : Is a process of compiling src code & Create artifacts.
+		
+		Environment
+		
+		DEV : 
+		
+		
+		Jenkins Architecture ::: is a Build Orchestration Tool 
+			Master/Slave Architecture:
+			
+			Continous Development 		--> Improve the productivity of Developers
+			
+					Coding ==>
+						Introduce the IDEs - (Integrated Development Environment) Eclipse based IDEs, Eclipse, Visual Studio Code, Pycharm, to develop the code.
+					Build ==> 
+						It is a process of compiling the source code and create artifacts(Binaries - *.war / *.jar /*.exec / *.dll
+					Unit Testing by developers					
+					Promote to higher envrionment for further Testing
+					Notify the Testing team thru Emails...
+					
+					DevOps Tools ::: GIT, Jenkins, Build tools Maven,Gradle, JUnit/TestNG, Ansible,Docker 
+					
+			
+			Continous Integration 
+					==> How frequently we can integrate the code for further testing without creating any impact
+						Promote to higher envrionment for further Testing
+						DevOps Tools ::: Jenkins, Ansible, Docker
+					
+			
+			
+			Master/Slave Architecture:		Load Balancing.
+
+				Jenkins_Master 		(VM)		---> It is used to create Jenkins Jobs/Project and Schedule to slave Nodes.
+					Slave_Nodes(VM)				---> Used to perform the actual build and create artifacts.
+						Jenkins_Slave1  (VM)	Java appln. 	-- jdk, git, mavan/gradle	
+						Jenkins_Slave2  (VM)    Python appln.	-- git, python 
+						
+			About the Roles & Responsibilites :::
+			
+			
+			Developers Perspective:
+				Developers are just the consumers of Jenkins.		
+			
+			
+			DevOps Perspective:
+				Jenkins_Administrators
+				
+					Installation of Jenkins
+					Plugins Management
+					Upgrade
+					User Management
+					Credential Management 
+					Tools Mangements
+					Slave_Nodes Management 
+					Security Management
+					Onboard Applications to Jenkins 
+					Jenkins Jobs/Project/Pipeline Creation and management 
+						Create CI/CD Pipeline for automated build & Deployment
+					Troubleshooting
+					Backup and Recovery 
+					
+					
+			Installation of Jenkins	::
+			
+				1. AWS free tier Account :
+						- valid email_id & Mobile Number
+						- credit/debit card - International transaction
+						
+				2. Access AWS Console.
+						using root user ID - email id, 
+				
+				3. Create AWS EC2 Instance -- Ubuntu Machines.
+				4. Connect to EC2 Instance
+						- EC2 Instance Connect
+						- SSH Agents 
+								putty
+								mobaXterm		https://mobaxterm.mobatek.net/download.html
+						- Terminals
+				
