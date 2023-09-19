@@ -1609,7 +1609,7 @@ Day 7 - 19th Sep. 2023
 				
 					username & password.
 					
-					username & access token. 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
+					username & access token. 
 					
 				git clone 
 				
