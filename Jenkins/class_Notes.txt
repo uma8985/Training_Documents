@@ -264,3 +264,89 @@ Day 7 - 19th Sep. 2023
 								mobaXterm		https://mobaxterm.mobatek.net/download.html
 						- Terminals
 				
+				
+***********************
+Day 7 - 19th Sep. 2023 
+***********************
+
+						
+		Installation of Jenkins 	
+
+
+				In AWS  - Virtual Machines are called as EC2 Instances
+				
+					VM --> AMI --> Instance Type --> Access Key
+					
+					
+				1VM - 750 hrs/month
+				
+				10VMs - 75 hrs/month
+
+
+				Linux Distributions :::
+				
+				 Unix 
+				  Linux centos RHEL Debian Ubuntu Amazon Linux
+				  
+				  
+		
+		Install Jenkins :::			https://www.jenkins.io/doc/book/installing/
+		
+				1. Pre-requisites 
+				2. Actual Installation of Tools 
+				3. Post Installation.
+					
+					
+				Linux Package :::
+				
+					It is used to manage the packages ::
+					
+						centos/rhel/amazonlinux(previous version) 	==> yum package manager 
+						ubuntu 										==> apt package manager
+						
+				Jenkins run as a service and it runs in default - port 8080 
+				
+				<public_ipaddress>:8080
+				
+				http://65.0.131.45:8080/
+
+#Install Java :
+					
+sudo -i
+
+sudo apt update
+sudo apt install openjdk-17-jre
+java -version				
+			
+
+Install Jenkins :			
+
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins	
+
+
+
+systemctl status jenkins 
+systemctl restart jenkins 
+systemctl start jenkins 
+systemctl stop jenkins 				
+					
+
+					
+					
+Next :		
+			Jenkins Projects :
+			
+				Freestyle projects 		# done thru manual configurations
+				
+				pipeline projects 		# done thru automated scripts - groovy
+					Onboard Applications to Jenkins 
+					Jenkins Jobs/Project/Pipeline Creation and management 
+						Create CI/CD Pipeline for automated build & Deployment
+						
+				Slave Node Configuration
