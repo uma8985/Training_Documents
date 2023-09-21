@@ -350,3 +350,257 @@ Next :
 						Create CI/CD Pipeline for automated build & Deployment
 						
 				Slave Node Configuration
+				
+***********************
+Day 9 - 21st Sep. 2023 
+***********************
+
+			Jenkins Projects :
+			
+				Freestyle projects 		# done thru manual configurations
+				
+				pipeline projects 		# done thru automated scripts - groovy
+					Onboard Applications to Jenkins 
+					Jenkins Jobs/Project/Pipeline Creation and management 
+						Create CI/CD Pipeline for automated build & Deployment
+						
+				Slave Node Configuration
+				
+				Use Cases :
+				
+					Automated build and deployments 
+					Automate the Testing 
+					Automate the Monitoring and Alerts 
+					Automate the Backup process 
+					Automate the volume management.
+					Automate the start and stop of various environments/servers - thru scheduling....
+					CLI --> awscli, azcli
+					
+				
+				Environments :
+				
+				DEV
+				QA 
+				
+				UAT 
+					
+					
+				PROD 
+				
+				Non-Prod  & Prod 
+					
+				
+					
+				Freestyle projects 		# done thru manual configurations
+				
+					Create  and configure.
+					Build Steps
+					
+					Variables :
+						Environment Variables
+						User-Defined Variables
+					
+					Execute and Check the status/console
+					
+					
+					scmcheckout - build - create artifacts - deploy&test in qa - deploy&test in uat - deploy to prod 
+
+					scmcheckout - build - create artifacts - deploy&test in qa - deploy&test in uat - Prod_Approval - deploy to prod
+					
+					
+				
+				Pipeline Projects ==>	 Groovy Scripts :::
+				
+					Scripted Pipeline 
+					
+					Declarative Pipeline
+					
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM Checkout') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Deploy to QA Server') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}					
+					
+			 
+
+			CI/CD Pipeline Project ::::
+			
+				scmcheckout - build - create artifacts - deploy&test in qa
+				
+				
+			
+			Jenkins_Master :	--> jdk, jenkins 
+			
+				Jenkins_Slave1 : --> git, jdk, maven 
+				
+			QA_Server:			--> jdk, tomcat
+			
+			
+			Maven Build Tool ::
+			
+				Compile and create artifacts 
+				Maven Goals & pom.xml(It is used to maintain the dependencies & plugins required to build the application)
+				
+				
+			The Slave - Node Creation.
+			
+			
+			Jenkins_Master :	--> jdk, jenkins 				VM 
+				Jenkins_Slave1 : --> git, jdk, maven 			VM
+			
+			
+			1. Install the required tools in slave node 
+			2. Create the a user in slave node 
+			3. Create Authentication method.
+					SSH Key based authtication.
+					
+				Authentication methods :
+					Key based Auth.			
+						public key 
+						private key
+					Token based Auth.
+					Password based Auth.
+					Passwordless Auth.
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+##To Configure Jenkins Msster :::
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#Install Java :
+					
+sudo -i
+
+sudo apt update
+sudo apt install openjdk-17-jre
+java -version				
+			
+
+Install Jenkins :			
+
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins	
+
+
+
+systemctl status jenkins 
+systemctl restart jenkins 
+systemctl start jenkins 
+systemctl stop jenkins 	
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+###Configure Slave Node1 for Java Maven App. :
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+###Install Java ::
+
+sudo -i 
+sudo apt update -y 
+sudo apt install openjdk-11-jre -y
+java -version
+
+###Install GIT :
+
+sudo apt install git -y
+
+##Install Maven - Build Tool :
+### https://maven.apache.org/install.html
+
+sudo apt install maven -y 
+
+
+###Create User in Jenkins Slave Machine & Create SSH Keys 
+
+##	SSH Keys --> is composed of public and private keys 
+
+
+#Add User : 
+
+#useradd -m -d /home/devopsadmin devopsadmin
+#useradd devopsadmin
+
+useradd devopsadmin -s /bin/bash -m -d /home/devopsadmin
+
+su - devopsadmin
+
+#ssh-keygen
+
+#for Ubuntu ::
+ssh-keygen -t rsa -b 4096 -m PEM
+
+
+ls ~/.ssh 
+
+#You should see following two files:
+
+#id_rsa - private key
+#id_rsa.pub - public
+
+
+cat id_rsa.pub > authorized_keys
+
+chown -R devopsadmin /home/devopsadmin/.ssh
+chmod 600 /home/devopsadmin/.ssh/authorized_keys
+chmod 700 /home/devopsadmin/.ssh
+
+
+##In Jenkins Master - Add Node Configuration
+		
+###		Goto Manage Jenkins - Add New Node Configuration
+		
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+pipeline {
+    agent { label 'slave1' }
+
+    stages {
+        stage('SCM Checkout') {
+            steps {
+                echo 'Perform SCM Checkout'
+				git 'https://github.com/LoksaiETA/Java-mvn-app2.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Deploy to QA Server') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}
+Next ::
+
+		Build 
+		Deployment 
+		Build Triggers
+
+
+
+				
