@@ -1,0 +1,98 @@
+		
+***********************
+Day 11 - 25th Sep. 2023 
+***********************			
+		
+		
+		Ansible Module :::
+		
+		Configuration Management Tool :::: -- Install/Unstall/Upgrade
+		
+		Server ::: 
+		
+			Tomcat server ::::
+			1. Manually Launched the Server 
+			2. Manually installed and configured the required tools for tomcat.
+			
+		
+		IAC Tools ==> Infra-Structure As Code. - Scripting will be declarative. - keys & value - key-value pairs
+		
+			Infra-Structure Provisioning 		===> Terraform/CF 
+			
+			Configuration Management 			===> Ansible/Chef/puppet
+			
+			
+		Ansible Architecture -- Yaml Scripting 
+		
+			Ansible controller 
+			
+			Inventory 	== > Is used to maintain the list of target servers 
+			
+			Modules		==> Task to be performed in target machines 
+			
+			ansible.cfg	==> Used to maintain the default properties of AC Machines.
+			
+			Mode of Execution:
+		
+				- Using Adhoc Commands 
+						yum install git -y
+						
+				- Using Playbooks ==> Script written using yaml 
+				
+						yum install jdk 
+						yum install maven 
+						
+						
+			Install Ansible ::::
+			
+			
+				Ansible_Controller:
+					Ansible_Node1
+					Ansible_Node2
+					
+			
+			1. AC 		==> Install Ansible.  	==> Owned ny Admins - IT/DevOps
+				1. Create the Users.
+				2. Create SSH-Keys
+				3. Copy the keys to targets,
+				
+			2. AWN1,2	==>						==> From any team/ dev/test 
+				1. Create the Users.
+]				
+			Authentication Methods ::::
+			
+				Password 
+				Key-based 
+				Token-based 
+				Passwordless 
+				
+			In Jenkins_Architecture :
+			
+				Created the keys in slave node & shared the private key of slave to jenkins master.
+				
+				Public key :::
+				
+			Key-Based Authentication :;
+			
+				Create the SSH_Keys in Ansible_Controller 
+				Share the public of Ansible_Controller to all its target nodes as a authorized_keys.
+				
+				
+				
+***********************
+Day 12 - 26th Sep. 2023 
+***********************						
+				
+				Install and configure Ansible Controller and target machines.				
+
+        Working with Ansible Adhoc commands / Playbooks
+			
+		
+			
+			
+		
+
+
+
+
+
