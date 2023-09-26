@@ -747,4 +747,45 @@ Deploy to Target Servers ::::
 			
 			- Poll SCM 
 			
+
+***********************
+Day 11 - 25th Sep. 2023 
+***********************			
+		
+		Build Triggers :::
+		
+			- Build Periodic 		-- Crontab :
+					==> Used to trigger the jenkins job based upon the schedule
+			
+			Non-Prod Servers 												Prod Servers/Prod
+			
+			DEV 
+			QA 
+			UAT 
+			
+			8AM Start all the non-prod servers 
+			10PM stop all the non-prod servers 
+			
+			- Github Webhook
+					==> Used to trigger the jenkins job as soon the src_code repo is pushed with any new changes.
+						Create a github Webhook configuration in src_code repository using jenkins payload url.
+						http://13.235.86.157:8080/github-webhook/
+						
+						
+			
+			- Poll SCM 
+					==> Used to trigger the jenkins job based upon the schedule if there is any changes happened in src_code repo.
+					
+				Test_Cycles :::
 				
+					Test_Jobs 
+						8AM -- Test job
+						12noon --> test job1
+						4 pm
+			
+Summary :::
+		Jenkins_Architecture 
+		Node config. 
+		Jenkins Administration 
+		CICD
+		Automated triggers				
