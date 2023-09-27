@@ -79,14 +79,53 @@ Day 11 - 25th Sep. 2023
 				
 				
 				
+				
 ***********************
 Day 12 - 26th Sep. 2023 
 ***********************						
 				
-				Install and configure Ansible Controller and target machines.				
+			Install and configure Ansible Controller and target machines.	
 
-        Working with Ansible Adhoc commands / Playbooks
+			Adhoc Commands				
 			
+			
+				
+***********************
+Day 12 - 27th Sep. 2023 
+***********************	
+
+			Ansible playbooks 
+			
+			Ansible Roles
+
+			Containerization using Docker.
+			
+			
+			Ansible playbooks --> It should be reuse. 
+			
+			Variables in Ansible Playbook. 
+			*.yaml script for config.
+			
+			
+			Organising the Playbooks and associated ansible components.
+			
+			Ansible Roles == > Used to organise the Ansible Components.
+			
+			- Target Machne 
+			  --> Pre-requisites
+			  --> Install 
+			  --> post installation
+			  
+			  
+			Visual Studio Code -- IDE 
+				- Install Yaml Extension in Visual Studio Code.
+				
+
+Next : 
+		Docker.
+			
+			
+				
 		
 			
 			
