@@ -2680,6 +2680,245 @@ Next :
 				kubernetes
 				
 				
+***********************
+Day 15 - 29th Sep. 2023 
+***********************						
+				
+				Create Image
+				port mapping
+				volume
+				compose 
+				swarm 
+				kubernetes				
+				
+			
+			Container Port Mapping/Binding :::
+			
+				QA_Server ==> Tomcat ==> port 8080
+				
+				docker run -it -p 8085:8080 tomcat:8.0
+				
+				-p <host_port>:<container_port>
+				
+				docker exec -it a0a713b66f34 bash
+				
+				AD Team ==> Test their webappln. service ==> 
+				
+				QA_Envi. VM
+				
+				signin.war 		--> 8080
+				payment.war 
+				searchinfo.war
+				
+				run C1 --> tomcat --> 8089 in host machine 
+				run C2 --> tomcat --> 8085 in host machine
+				run C3 --> tomcat --> 8086 in host machine
+				
+				docker logs <contianer_id>
+			
+			Docker Volumes :::
+			
+				On Container Perspective:
+				
+					- Stateless Application 
+							This Application will no have any trace of execution
+					- Stateful Application
+							This Application leaves the trace of execution in the form of log files, output files, report, status properties
+			
+				Create a Docker Volume and mount that volume to the container.
+				
+				Thru this volume we can send some inputs to the container & also recv. some output from the container.
+				
+				Micro service ==> we need to run more than 1 container as a service 
+				C1,C2,C3 ==> sign_in
+				
+				docker run -it --mount source=edudcpsep11vol1,destination=/edudcpsep11vol1 centos bash
+				
+			Create/Build the Images :::
+			
+				--> docker commit 
+								uses commit ID to create a new Image
+				
+				--> docker build 
+								uses the Dockerfile to create a new Image
+				
+								Dockerfile is a collection of Instructions to build the Image.
+				
+				
+				docker commit :::
+							docker commit <container_id> <new_Image_id>
+				
+				
+				docker build :::
+							docker build -t <new_Image_id> .
+				Dockerfile 
+				
+				FROM debian 
+				RUN apt-get update -y
+				RUN apt-get install git -y
+				
+			Publish Images to Container Registry :::
+			
+				login to dockerhub using CLI.
+				
+				==> User_id
+						docker login -u loksaieta
+				==> Access_Token
+						dclll;l;l;m;m
+				
+				push command to publish the image to dockerhub
+				
+					docker push loksaieta/edusep11gitv1:1.0
+					
+					docker push loksaieta1/edusep11gitv1:1.0
+					
+		
+			
+		Docker_Compose ::: 
+		
+			==> It is used to run multiple containers as a Service.
+				Micro service ==> we need to run more than 1 container as a service 
+				C1,C2,C3 ==> sign_in
+				
+		Container Orchestration ::::
+			==> It is used to ensure high availablility of Containers.	
+			
+			Docker Container :::
+				Docker Swarm ==> This is used only for Docker Container.
+				Following features are associated to Container Orchestration Tool :
+					Auto-scaling 
+					Replicas
+					Load-Balancing 
+			
+				Will Create Multiple replicas of Container 
+				
+					created 3 replicas of a container.  +10
+					
+				Kubernetes is the open-source container Orchestration Tool. 
+							Used to deploy the containerized workload.
+					Auto-scaling 
+					Replicas
+					Load-Balancing
+				
+			DevOps -->
+			
+			Configure the CI/CD Pipeline :::
+			
+			
+			SCM Checkout 
+			Build Application 
+			Test 
+			Deployed the artifacts to QA_Server 
+			 
+			SCM Checkout 
+			Build Application 
+			Build Application Image 
+			Publish the Image to DockerHub 
+			Deploy to target environment using Kubernetes
+			
+			www.amazon.com == 5000 microservices:
+			
+		Kubernetes ::
+			Kubernetes Architecture :
+				Kubernetes_Master	#It is used to create the Deployment objects and schedule the deployments
+					Kubernetes_WorkerNode1	# It is used to actually run the applications
+					Kubernetes_WorkerNode2
+					Kubernetes_WorkerNode3
+					Kubernetes_WorkerNode4
+			
+			Kubernetes_Cluster ::
+					==> It is a collection of Kubernetes_WorkerNodes
+					
+			Terminologies :::
+			
+				Image 
+				Container 
+				Container Registry 
+				Repositories 
+				Pods
+				Cluster 
+				Services 
+				
+			Kubernetes is the open-source container Orchestration Tool.	
+
+			Managed Services :::
+				AWS ==> EKS 
+				Az  ==> AKS 
+				GCP ==> GKS 
+			
+  339  docker ps
+  340  docker ps -a
+  341  clear
+  342  docker ps
+  343  clear
+  344  docker ps
+  345  docker exec -it a0a713b66f34
+  346  clear
+  347  docker exec -it a0a713b66f34 bash
+  348  docker ps
+  349  docker run -it -p 8089:8080 tomcat:8.0
+  350  docker run -it tomcat:8.0 bash
+  351  docker ps
+  352  docker logs a0a713b66f34
+  353  clear
+  354  docker volume lsit
+  355  docker volume list
+  356  clear
+  357  docker volume create edudcpsep11vol1
+  358  docker volume list
+  359  docker volume inspect edudcpsep11vol1
+  360  cd /var/lib/docker/volumes/
+  361  ls
+  362  cd edudcpsep11vol1/
+  363  ls
+  364  cd _data/
+  365  pwd
+  366  cd ~
+  367  docker run -it centos bash
+  368  docker run -it --mount source=edudcpsep11vol1,destination=/edudcpsep11vol1 centos bash
+  369  cd /var/lib/docker/volumes/edudcpsep11vol1/_data/
+  370  ls
+  371  cat filefromcontainer.txt
+  372  ls
+  373  echo "rec1" >> inputfile1.txt
+  374  ls
+  375  cd ~
+  376  docker run -it --mount source=edudcpsep11vol1,destination=/edudcpsep11vol1 centos bash
+  377  docker ps -a
+  378  clear
+  379  docker ps -a
+  380  docker start c75a57e9b286
+  381  clear
+  382  docker run -it tomcat:8.0 bash
+  383  clear
+  384  docker run -it debian
+  385  docker ps -a
+  386  docker run -it debian
+  387  docker images
+  388  docker commit 22a04607936e loksaieta/edusep11git
+  389  docker images
+  390  docker run -it loksaieta/edusep11git
+  391  docker images
+  392  docker history debian
+  393  mkdir docker-contents
+  394  mkdir dockerfiles
+  395  cd dockerfiles/
+  396  vi Dockerfile
+  397  cat Dockerfile
+  398  docker build -t loksaieta/edusep11gitv1:1.0 .
+  399  vi Dockerfile
+  400  docker images
+  401  docker build -t loksaieta/edusep11gitv1:1.0 .
+  402  docker images
+  403  docker run -it loksaieta/edusep11gitv1
+  404  docker run -it loksaieta/edusep11gitv1:1.0
+  405  clear
+  406  cd ~
+  407  ls
+  408  docker images
+  409  docker login -u loksaieta
+  410  docker push loksaieta/edusep11gitv1:1.0
+  411  history		
 					
 
 						
