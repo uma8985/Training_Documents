@@ -28,6 +28,7 @@ vi /etc/ssh/sshd_config
 #Execute Below command to update the changes.
 
 service sshd reload
+sed command:[root@ip-172-31-27-166 ~]# sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 
 #As a root user edit below file:
 
