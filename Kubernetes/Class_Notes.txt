@@ -1,0 +1,120 @@
+		
+***********************
+Day 16 - 2nd Oct. 2023 
+***********************	
+
+		Kubernetes ::
+			Kubernetes Architecture :
+				Kubernetes_Master	#It is used to create the Deployment objects and schedule the deployments
+					Kubernetes_WorkerNode1	# It is used to actually run the applications
+					Kubernetes_WorkerNode2
+					Kubernetes_WorkerNode3
+					Kubernetes_WorkerNode4
+			
+			Kubernetes_Cluster ::
+					==> It is a collection of Kubernetes_WorkerNodes
+					
+			Terminologies :::
+			
+				Image 
+				Container 
+				Container Registry 
+				Repositories 
+				Pods
+				Cluster 
+				Services 
+				
+			Core Concepts :
+			
+				PODs
+				Controller Objects 
+					Replication Controller 
+					Replicasets
+					Daemonset 
+					Deployments 
+				Services 
+					ClusterIP
+					NodePort
+					LoadBalancer
+				Volumes 
+				Namespaces
+				
+				
+			Kubernetes is the open-source container Orchestration Tool.	
+
+			Managed Services :::
+				AWS ==> EKS 
+				Az  ==> AKS 
+				GCP ==> GKS 
+				
+			
+			Kubernetes Architecture :::
+			
+				Kubernetes_Master :
+					Kubernetes_WorkerNode1
+					Kubernetes_WorkerNode2
+					
+					
+			Terminologies :::
+			Core Concepts :
+			
+				PODs
+				kubectl 	==> It is used to interact with Kubernetes Master.
+				kubeadm		==> It is a command line utility to install and config. Kubernetes_Master & Kubernetes_WorkerNodes
+				
+				
+				
+				Controller Objects 
+					Replication Controller 
+					Replicasets
+					Daemonset 
+					Deployments 
+				Services 
+					ClusterIP
+					NodePort
+					LoadBalancer
+				Volumes 
+				Namespaces
+
+
+			Installation of Kubernetes::::
+			
+					1. Launch the required no. of VMs - 
+					
+					Should be executed in all the nodes:
+						2. Configure the Node Names 
+						3. Install Docker 
+						4. Container Runtime Interfaces - CRI - ContainerD
+						5. Start ContainerD 
+						6. Install Kubeadm,kubectl,kubelet
+						
+					Should be executed only in master nodes:	
+						7. Initialize Kubernetes Master Node using Kubeadm
+					
+					Should be executed only in Worker nodes:
+						8. Join the WorkerNodes to Kubernetes_Master
+					
+					
+
+
+
+K8s ==> Kubernetes
+
+
+		How to create a pod :::
+		
+			Adhoc Commands 
+			
+			Manifest file 
+			
+			
+			Kubernetes Services ::
+			
+				NodePort :::
+				
+				1. Expose the pod to internet using NodePort Service.
+				
+						NodePort
+		
+		
+
