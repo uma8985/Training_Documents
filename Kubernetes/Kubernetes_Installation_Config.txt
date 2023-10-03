@@ -275,7 +275,7 @@ master-node   Ready    control-plane,master   5m12s   v1.24.1
 worker-node   Ready    worker                 2m55s   v1.24.1
 
 
-#sudo kubeadm token create --print-join-command
+#sudo kubeadm token create --print-join-command (command to create token for joining new /old worker nodes)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ###Only in Worker Nodes:
