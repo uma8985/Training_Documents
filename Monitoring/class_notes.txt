@@ -1,0 +1,31 @@
+
+		
+***********************
+Day 19 - 5th Oct. 2023 
+***********************	
+
+		Fundamentals of Continuous Monitoring using Prometheus & Grafana
+
+			- Infra-Structure 
+				--> Prometheus/Grafana/Splunk/Dynatrace
+						Monitor the Target Environments 
+						CPU, Memory, Network Traffic
+						
+						Production support/Monitoring Teams 
+						
+			- Application 
+			
+			
+			Architecture Of any Monitoring Tool :::
+				
+				Prometheus 	==> Monitoring Tool 
+				Grafana 	==> Visualization Tool
+			
+			Install Prometheus/Grafana 
+			
+			Launch VM - 
+			
+			Prometheus uses time series database to store the details 
+			promql
+
+
