@@ -1,0 +1,119 @@
+***********************
+Day 18 - 4th Oct. 2023 
+***********************	
+
+			
+			Kubernetes Namespaces :::
+			
+				It is a logical partitioning of Cluster.
+				
+				Deployments :::
+				
+				Target Environments :::
+				
+				Non-Prod					Prod 
+				DEV 
+				QA 
+				UAT 						PROD_Ennvi.
+				
+				
+				Non-Prod :::
+				
+				Kubernetes_Master
+					Kubernetes_WorkerNode1,2,3,4,5
+				
+				Dev - Namespace 
+				QA - Namespace
+				
+				Teams :
+				
+				Dev_Team -->
+				
+				
+Summary :::
+				Installation & Configuration of Kubernetes
+				PODs 
+				Controller Objects 
+					Replication Controller 
+					Replicasets
+					Daemonset 
+					Deployments********
+				Services 
+					ClusterIP
+					NodePort***********
+					LoadBalancer
+				Volumes 
+				Namespaces
+
+
+Fundamentals of Terraform 
+
+Fundamentals of Continuous Monitoring using Prometheus & Grafana
+
+
+			IAC Tools -- Ansible :::
+			
+				Terraform ==> Used for Provisioning the servers:
+				Ansible ===> Configure.
+			
+			Fundamentals of Terraform 
+			
+			
+		Terraform ::::
+			Provisioning the servers -- Infra-Structure Team.
+			
+			Providers ::::
+			
+			1. Identify the scope - Providers (AWS/Az/GCP)
+			2. Initialize the provider 
+			3. Create the Terraform Script.	==> Written using HCL Language - HashiCorp Declarative Language(*json file format)
+			4. Terraform plan 
+			5. Terraform Apply
+
+
+		Installation of Terraform ::: https://developer.hashicorp.com/terraform/downloads
+		
+		Visual Studio Code ::::  https://code.visualstudio.com/download
+			Install Terraform Extension for Visual Studio Code.
+		
+		
+		To Initialize AWS Provider for Terraform 
+		
+			Create : AWS - accesskey & Secret key
+			
+		Using Terraform ::
+
+			Create/Add  			+
+			
+			Update/Modify/change 	~
+			
+			Delete/Destroy 			-
+			
+			1 to add, 0 to change, 0 to destroy.
+			
+			
+			
+CICD Pipeline:::
+
+Scenario1:
+		SCM-Checkout --> Build --> Deploy to QA --> Perform QA_Testing --> Deploy to UAT 
+		
+Scenario2.1:	
+
+		SCM_Checkout --> Provision_QA_server_using_Terraform --> Config_the_server_using_Ansible
+		
+		SCM-Checkout --> Build --> Deploy to QA --> Perform QA_Testing --> Deploy to UAT 
+		
+Scenario2.2:
+
+		SCM-Checkout --> Provision_QA_server_using_Terraform --> Config_the_server_using_Ansible --> Build --> Deploy to QA --> Perform QA_Testing
+		
+		Installation of Terraform ::
+		
+		statefile
+		
+		
+Next ::: 
+Fundamentals of Continuous Monitoring using Prometheus & Grafana
+
+CICD pipeline :

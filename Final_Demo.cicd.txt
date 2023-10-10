@@ -1,0 +1,107 @@
+
+
+CICD Demo ::::
+
+	CI-CD Pipeline :::
+	
+	
+		SCM-Checkout 
+		Build_Application 
+		Build_Docker_Image
+		Publish_to_DockerHub
+		Deploy_to_Kubernetes 
+		
+	VMs --> 
+		Jenkins_Master/Slave_Node1/Kubernetes_Master/Kubernetes_WorkerNode1,2
+		
+		
+	Docker Image build ::::
+	
+	docker build -t <image_name> .
+	
+	Dockerfile 
+
+
+Environments :::
+
+DEV 
+QA 
+UAT 				PROD (LIVE)
+
+
+
+CICD Demo Pipeline Script ::::
+
+pipeline {
+
+    agent { label 'slave1' }
+	
+    tools {
+        maven "maven-3.6.3"
+    }
+
+	environment {	
+		DOCKERHUB_CREDENTIALS=credentials('dockerloginid')
+	}
+	
+    stages {
+        stage('SCM_Checkout') {
+            steps {
+                echo 'Perform SCM Checkout'
+				git 'https://github.com/LoksaiETA/devops-java-webapp.git'
+            }
+        }
+        stage('Application_Build') {
+            steps {
+                echo 'Perform Maven Build'
+				sh 'mvn -Dmaven.test.failure.ignore=true clean package'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+				sh 'docker version'
+				sh "docker build -t loksaieta/loksai-eta-app:${BUILD_NUMBER} ."
+				sh 'docker image list'
+				sh "docker tag loksaieta/loksai-eta-app:${BUILD_NUMBER} loksaieta/loksai-eta-app:latest"
+            }
+        }
+        stage('Approve - push Image to dockerhub'){
+            steps{
+                
+                //----------------send an approval prompt-------------
+                script {
+                   env.APPROVED_DEPLOY = input message: 'User input required Choose "yes" | "Abort"'
+                       }
+                //-----------------end approval prompt------------
+            }
+        }
+		stage('Login2DockerHub') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+		stage('Publish_to_Docker_Registry') {
+			steps {
+				sh "docker push loksaieta/loksai-eta-app:latest"
+			}
+		}
+        stage('Approve - Deploy to Kubernetes'){
+            steps{
+                
+                //----------------send an approval prompt-------------
+                script {
+                   env.APPROVED_DEPLOY = input message: 'User input required Choose "yes" | "Abort"'
+                       }
+                //-----------------end approval prompt------------
+            }
+        }
+		stage('Deploy Kubernetes') {
+            steps {
+				script {
+				sshPublisher(publishers: [sshPublisherDesc(configName: 'Kubernetes', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'kubectl apply -f k8smvndeployment.yaml', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '.', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '*.yaml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+			}	
+            }
+		}
+    }
+}
